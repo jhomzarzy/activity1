@@ -10,8 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.fimc.hello.resource.PeopleRequest;
-import com.fimc.hello.resource.PeopleResponse;
+import com.fimc.hello.request.PeopleRequest;
+import com.fimc.hello.response.PeopleResponse;
 
 @Service
 public class PeopleService {

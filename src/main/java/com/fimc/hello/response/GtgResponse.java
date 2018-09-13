@@ -1,4 +1,4 @@
-package com.fimc.hello.resource;
+package com.fimc.hello.response;
 
 import lombok.Getter;
 import lombok.Setter;

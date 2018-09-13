@@ -1,4 +1,4 @@
-package com.fimc.hello.resource;
+package com.fimc.hello.request;
 
 import java.io.Serializable;
 import java.util.Date;

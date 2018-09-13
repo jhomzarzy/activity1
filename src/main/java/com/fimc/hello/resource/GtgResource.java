@@ -8,6 +8,8 @@ import javax.ws.rs.core.Response;
 
 import org.springframework.stereotype.Component;
 
+import com.fimc.hello.response.GtgResponse;
+
 @Component
 @Path("/__gtg")
 public class GtgResource {

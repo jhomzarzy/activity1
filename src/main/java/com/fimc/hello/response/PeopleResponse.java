@@ -1,7 +1,4 @@
-package com.fimc.hello.resource;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.fimc.hello.response;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import com.fimc.hello.request.PeopleRequest;
+import com.fimc.hello.response.HttpCodeResponse;
+import com.fimc.hello.response.PeopleResponse;
 import com.fimc.hello.service.PeopleService;
 
 @Component

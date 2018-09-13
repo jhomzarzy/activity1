@@ -10,6 +10,9 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.fimc.hello.request.CalculatorRequest;
+import com.fimc.hello.response.CalculatorResponse;
+import com.fimc.hello.response.HttpCodeResponse;
 import com.fimc.hello.service.CalculatorService;
 
 

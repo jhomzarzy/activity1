@@ -6,8 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.fimc.hello.resource.CalculatorRequest;
-import com.fimc.hello.resource.CalculatorResponse;
+import com.fimc.hello.request.CalculatorRequest;
+import com.fimc.hello.response.CalculatorResponse;
 
 
 @Service
