@@ -26,9 +26,9 @@ public class CalculatorResource {
 		CalculatorResponse calculatorResponse = calculatorService.calculate(calculatorRequest);
 		
 		if(calculatorResponse.getAction() == null || calculatorResponse.getResult() == null) {
-			HttpErrorResponse httpErrorResponse = new HttpErrorResponse();
+			HttpCodeResponse httpErrorResponse = new HttpCodeResponse();
 			httpErrorResponse.setErrorCode(HttpServletResponse.SC_BAD_REQUEST);
-			httpErrorResponse.setMessage("Operator Not Found");
+			httpErrorResponse.setMessage("Invalid Operation/Operator Not Found");
 			return Response.status(HttpServletResponse.SC_BAD_REQUEST).entity(httpErrorResponse).build();
 		}
 		

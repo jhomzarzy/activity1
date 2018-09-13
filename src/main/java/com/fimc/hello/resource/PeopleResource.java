@@ -3,6 +3,7 @@ package com.fimc.hello.resource;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -24,20 +25,30 @@ public class PeopleResource {
 	
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response People(PeopleRequest peopleRequest){
-		HttpErrorResponse httpErrorResponse = new HttpErrorResponse();
+	public Response addPeople(PeopleRequest peopleRequest){
+		HttpCodeResponse httpCodeResponse = new HttpCodeResponse();
 		if(StringUtils.isEmpty(peopleRequest.getFirstName()) || 
 				StringUtils.isEmpty(peopleRequest.getLastName()) || 
 				StringUtils.isEmpty(peopleRequest.getBirthDate())) {
-			httpErrorResponse.setErrorCode(HttpServletResponse.SC_BAD_REQUEST);
-			httpErrorResponse.setMessage("all fields required");
-			return Response.status(HttpServletResponse.SC_BAD_REQUEST).entity(httpErrorResponse).build();	
+			httpCodeResponse.setErrorCode(HttpServletResponse.SC_BAD_REQUEST);
+			httpCodeResponse.setMessage("all fields required");
+			return Response.status(HttpServletResponse.SC_BAD_REQUEST).entity(httpCodeResponse).build();	
 		}else if(peopleService.isDateValid(peopleRequest.getBirthDate())==false) {
-			httpErrorResponse.setErrorCode(HttpServletResponse.SC_BAD_REQUEST);
-			httpErrorResponse.setMessage("Date Format Invalid");
-			return Response.status(HttpServletResponse.SC_BAD_REQUEST).entity(httpErrorResponse).build();	
+			httpCodeResponse.setErrorCode(HttpServletResponse.SC_BAD_REQUEST);
+			httpCodeResponse.setMessage("Date Format Invalid");
+			return Response.status(HttpServletResponse.SC_BAD_REQUEST).entity(httpCodeResponse).build();	
 		}
-		List<PeopleResponse> people = peopleService.addPerson(peopleRequest);
-		return Response.ok(HttpServletResponse.SC_CREATED).entity(people).build();
+		peopleService.addPerson(peopleRequest);
+		
+		httpCodeResponse.setErrorCode(HttpServletResponse.SC_CREATED);
+		httpCodeResponse.setMessage("Created");
+		return Response.ok(HttpServletResponse.SC_CREATED).entity(httpCodeResponse).build();
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getAll(){
+		List<PeopleResponse> people = peopleService.findAllPerson();
+		return Response.ok().entity(people).build();
 	}
 }

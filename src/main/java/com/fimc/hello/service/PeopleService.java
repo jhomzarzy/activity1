@@ -3,7 +3,6 @@ package com.fimc.hello.service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class PeopleService {
 	
 	List<PeopleResponse> peopleResponse = new ArrayList<>();
 	
-	public List<PeopleResponse> addPerson(PeopleRequest peopleRequest) {
+	public boolean addPerson(PeopleRequest peopleRequest) {
 		PeopleResponse pr = new PeopleResponse();
 		
 		pr.setFirstName(peopleRequest.getFirstName());
@@ -29,11 +28,11 @@ public class PeopleService {
 		pr.setBirthDate(peopleRequest.getBirthDate());
 		logger.info(pr.toString());
 		peopleResponse.add(pr);
-		return peopleResponse;
+		
+		return true;
 	}
 	
 	public boolean isDateValid(String inDate) {
-//	    return inDate.matches("([0-9]{2})-([0-9]{2})-([0-9]{4})");
 		SimpleDateFormat sdfrmt = new SimpleDateFormat("MM-dd-yyyy");
 	    sdfrmt.setLenient(false);
 	    try
@@ -45,6 +44,10 @@ public class PeopleService {
 	        return false;
 	    }
 	    return true;
+	}
+	
+	public List<PeopleResponse> findAllPerson() {
+		return this.peopleResponse;
 	}
 
 }

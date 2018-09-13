@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class HttpErrorResponse implements Serializable {
+public class HttpCodeResponse implements Serializable {
 	private String message;
 	private int errorCode;
 }

@@ -16,24 +16,25 @@ public class CalculatorService {
 	
 	public CalculatorResponse calculate (CalculatorRequest calculatorRequest) {
 		CalculatorResponse calculatorResponse = new CalculatorResponse();
-		DecimalFormat df = new DecimalFormat("#.#####");
 		
 		switch (calculatorRequest.getOperator()) {
 		case '+':
+			calculatorResponse.setResult(Double.parseDouble(new DecimalFormat("#.#####").format(calculatorRequest.getNumber1() + calculatorRequest.getNumber2())));
 			calculatorResponse.setAction("Addition");
-			calculatorResponse.setResult(Double.parseDouble(df.format(calculatorRequest.getNumber1() + calculatorRequest.getNumber2())));
 			break;
 		case '*':
+			calculatorResponse.setResult(Double.parseDouble(new DecimalFormat("#.#####").format(calculatorRequest.getNumber1() * calculatorRequest.getNumber2())));
 			calculatorResponse.setAction("Multiplication");
-			calculatorResponse.setResult(Double.parseDouble(df.format(calculatorRequest.getNumber1() * calculatorRequest.getNumber2())));
 			break;
 		case '-':
+			calculatorResponse.setResult(Double.parseDouble(new DecimalFormat("#.#####").format(calculatorRequest.getNumber1() - calculatorRequest.getNumber2())));
 			calculatorResponse.setAction("Subtraction");
-			calculatorResponse.setResult(Double.parseDouble(df.format(calculatorRequest.getNumber1() - calculatorRequest.getNumber2())));
 			break;
 		case '/':
-			calculatorResponse.setAction("Division");
-			calculatorResponse.setResult(Double.parseDouble(df.format(calculatorRequest.getNumber1() / calculatorRequest.getNumber2())));
+			try {
+				calculatorResponse.setResult(Double.parseDouble(new DecimalFormat("#.#####").format(calculatorRequest.getNumber1() / calculatorRequest.getNumber2())));
+				calculatorResponse.setAction("Division");
+			}catch (Exception e) {}
 			break;
 		default:
 			break;
